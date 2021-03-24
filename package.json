@@ -1,0 +1,25 @@
+{
+  "name": "tailwindcss-jit-rails",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "postcss ./vendor/assets/stylesheets/tailwind.css -o ./vendor/assets/stylesheets/_tailwind.css",
+    "start": "postcss ./vendor/assets/stylesheets/tailwind.css -o ./vendor/assets/stylesheets/_tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/jit": "^0.1.8",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.0.4"
+  },
+  "dependencies": {}
+}
