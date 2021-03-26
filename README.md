@@ -1,6 +1,6 @@
 # Tailwind CSS JIT + Rails without Webpacker
 
-Me and Webpack(er) have never really clicked, so it has been exciting to see [DHH promote a modern approach with the traditional asset pipeline](https://github.com/hotwired/hotwire-rails-demo-chat). Me and Tailwind _have_  clicked however, and the [new just-in-time (JIT) compiler](https://blog.tailwindcss.com/just-in-time-the-next-generation-of-tailwind-css), looks very useful; but without Webpacker, how should it be integrated into a Rail project? [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) looks promising, but I don't think it'll be possible to support the JIT compiler without getting stuck into Webpacker.
+Me and Webpack(er) have never really clicked, so it has been exciting to see [DHH promote a modern approach with the traditional asset pipeline](https://github.com/hotwired/hotwire-rails-demo-chat). Me and Tailwind _have_  clicked however, and the [new just-in-time (JIT) compiler](https://blog.tailwindcss.com/just-in-time-the-next-generation-of-tailwind-css), looks very useful; but without Webpacker, how should it be integrated into a Rails project? [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) looks promising, but I don't think it'll be possible to support the JIT compiler without getting stuck into Webpacker.
 
 This project experiments with a vanilla Tailwind (JIT) build step to provide a CSS file for the Rails asset pipeline to consume. The following describes the setup.
 
