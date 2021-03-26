@@ -68,10 +68,11 @@ Set up build scripts in `package.json` to generate a compiled `_tailwind.css` fi
 …
 ```
 
-Add the compiled `tailwind-build.css` to the `application.css` manifest:
+Add the compiled `tailwind-build.css` to the `application.css` manifest, and stub the `tailwind.css` manifest:
 ```
 /*
  *= require_tree .
+ *= stub tailwind
  *= require tailwind-build
  *= require_self
  */
