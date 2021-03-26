@@ -8,8 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "build": "postcss ./vendor/assets/stylesheets/tailwind.css -o ./vendor/assets/stylesheets/_tailwind.css",
-    "start": "postcss ./vendor/assets/stylesheets/tailwind.css -o ./vendor/assets/stylesheets/_tailwind.css --watch"
+    "build": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
+    "start": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch"
   },
   "keywords": [],
   "author": "",

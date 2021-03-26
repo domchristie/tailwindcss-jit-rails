@@ -1,5 +1,6 @@
 /*
  *= require_tree .
- *= require _tailwind
+ *= stub tailwind
+ *= require tailwind-build
  *= require_self
  */

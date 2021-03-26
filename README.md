@@ -38,7 +38,7 @@ module.exports = {
 }
 ```
 
-In `vendor/assets/stylesheets/tailwind.css`:
+In `app/assets/stylesheets/tailwind.css`:
 ```
 @tailwind base;
 @tailwind components;
@@ -62,17 +62,17 @@ Set up build scripts in `package.json` to generate a compiled `_tailwind.css` fi
 ```
 …
 "scripts": {
-  "build": "postcss ./vendor/assets/stylesheets/tailwind.css -o ./vendor/assets/stylesheets/_tailwind.css",
-  "start": "postcss ./vendor/assets/stylesheets/tailwind.css -o ./vendor/assets/stylesheets/_tailwind.css --watch",
+  "build": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
+  "start": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch",
 },
 …
 ```
 
-Add the compiled `_tailwind.css` to the `application.css` manifest:
+Add the compiled `tailwind-build.css` to the `application.css` manifest:
 ```
 /*
  *= require_tree .
- *= require _tailwind
+ *= require tailwind-build
  *= require_self
  */
 ```
@@ -100,7 +100,7 @@ Make changes and try it out at `http://localhost:3000`
 
 ## Deploy
 
-Rather than checking in the built `_tailwind.css` file each time we make changes, we could make this part of a build process on deploy. Here's the steps for deploying to Heroku:
+Rather than checking in the built `tailwind-build.css` file each time we make changes, we could make this part of a build process on deploy. Here's the steps for deploying to Heroku:
 
 Ignore the files we don't need to check in:
 ```

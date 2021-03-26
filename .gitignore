@@ -34,4 +34,4 @@
 
 /node_modules
 npm-debug.log
-/vendor/assets/stylesheets/_tailwind.css
+/app/assets/stylesheets/tailwind-build.css
