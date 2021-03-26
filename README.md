@@ -58,7 +58,7 @@ purge: [
 …
 ```
 
-Set up build scripts in `package.json` to generate a compiled `_tailwind.css` file:
+Set up build scripts in `package.json` to generate a compiled `tailwind-build.css` file:
 ```
 …
 "scripts": {
@@ -109,7 +109,7 @@ Ignore the files we don't need to check in:
 …
 /node_modules
 npm-debug.log
-/vendor/assets/stylesheets/_tailwind.css
+/app/assets/stylesheets/tailwind-build.css
 ```
 
 Commit:
@@ -126,7 +126,7 @@ Add the Node.js Heroku buildpack:
 ```
 heroku buildpacks:add --index 1 heroku/nodejs
 ```
-On deploy, this will install our Node.js dependencies and then run our build script. It's important that this buildpack is added first so that `_tailwind.css` is compiled _before_ the assets are compiled by the Ruby buildpack.
+On deploy, this will install our Node.js dependencies and then run our build script. It's important that this buildpack is added first so that `tailwind-build.css` is compiled _before_ the assets are compiled by the Ruby buildpack.
 
 Add the Ruby buildpack:
 ```
