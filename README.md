@@ -2,7 +2,7 @@
 
 Me and Webpack(er) have never really clicked, so it has been exciting to see [DHH promote a modern approach with the traditional asset pipeline](https://github.com/hotwired/hotwire-rails-demo-chat). Me and Tailwind _have_  clicked however, and the [new just-in-time (JIT) compiler](https://blog.tailwindcss.com/just-in-time-the-next-generation-of-tailwind-css), looks very useful; but without Webpacker, how should it be integrated into a Rail project? [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) looks promising, but I don't think it'll be possible to support the JIT compiler without getting stuck into Webpacker.
 
-This project experiments with a vanilla Tailwind (JIT) build step to provide a CSS file for the Rails asset pipeline to consume. The following describes how the project was setup.
+This project experiments with a vanilla Tailwind (JIT) build step to provide a CSS file for the Rails asset pipeline to consume. The following describes the setup.
 
 ## Install
 
@@ -136,4 +136,48 @@ Deploy:
 
 ```
 git push heroku master
+```
+
+## `@apply`
+
+I'd [avoid `@apply` where possible 😜](https://twitter.com/adamwathan/status/1308944904786268161), but if you have reasons…
+
+As with any Tailwind project, you can add `@apply` before your `@tailwind utilities`. If this becomes unmanageable, and/or you need `@apply`directives in other files, use a PostCSS import plugin. The following uses [postcss-easy-import](https://github.com/TrySound/postcss-easy-import).
+
+Install the plugin:
+```
+npm i -D postcss-easy-import
+```
+
+Configure `postcss.config.js`:
+```
+module.exports = {
+  plugins: {
+    'postcss-easy-import': {},
+    '@tailwindcss/jit': {},
+    autoprefixer: {},
+  }
+}
+```
+
+Replace your `@tailwind` directives with `@import`s in `tailwind.css`:
+```
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+```
+
+Now you're ready to import, for example:
+```
+/* app/assets/stylesheets/cards.css */
+.card {
+  @apply m-8 p-8 text-center shadow-lg rounded-xl;
+}
+```
+
+```
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'cards';
+@import 'tailwindcss/utilities';
 ```
