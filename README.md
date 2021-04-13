@@ -2,7 +2,7 @@
 
 Me and Webpack(er) have never really clicked, so it has been exciting to see [DHH promote a modern approach with the traditional asset pipeline](https://github.com/hotwired/hotwire-rails-demo-chat). Me and Tailwind _have_  clicked however, and the [new just-in-time (JIT) compiler](https://blog.tailwindcss.com/just-in-time-the-next-generation-of-tailwind-css), looks very useful; but without Webpacker, how should it be integrated into a Rails project? [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) looks promising, but I don't think it'll be possible to support the JIT compiler without getting stuck into Webpacker.
 
-This project experiments with a vanilla Tailwind (JIT) build step to provide a CSS file for the Rails asset pipeline to consume. The following describes the setup.
+This project experiments with a vanilla Tailwind build step to provide a CSS file for the Rails asset pipeline to consume. The following describes the setup.
 
 ## Install
 
@@ -18,9 +18,9 @@ Setup a `package.json`:
 npm init -y
 ```
 
-Install Tailwind, the JIT compiler, PostCSS, and Autoprefixer:
+Install the latest versions of Tailwind, PostCSS (+ CLI), and Autoprefixer:
 ```
-npm install -D @tailwindcss/jit tailwindcss postcss postcss-cli autoprefixer
+npm install -D tailwindcss@latest postcss@latest postcss-cli@latest autoprefixer@latest
 ```
 
 Setup Tailwind:
@@ -28,11 +28,11 @@ Setup Tailwind:
 npx tailwindcss init
 ```
 
-Create `postcss.config.js`and add the Tailwind JIT compiler as a PostCSS plugin:
+Create `postcss.config.js`and add Tailwind as a PostCSS plugin:
 ```
 module.exports = {
   plugins: {
-    '@tailwindcss/jit': {},
+    tailwindcss: {},
     autoprefixer: {},
   }
 }
@@ -50,6 +50,7 @@ In `app/assets/stylesheets/tailwind.css`:
 Configure the files to scan for Tailwind class names. The Tailwind JIT compiler will use these to determine which CSS rules to generate. In `tailwind.config.js`:
 ```
 …
+mode: 'jit',
 purge: [
   './app/**/*.html.erb',
   './app/helpers/**/*.rb',
@@ -155,7 +156,7 @@ Configure `postcss.config.js`:
 module.exports = {
   plugins: {
     'postcss-easy-import': {},
-    '@tailwindcss/jit': {},
+    tailwindcss: {},
     autoprefixer: {},
   }
 }
