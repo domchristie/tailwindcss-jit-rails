@@ -18,24 +18,14 @@ Setup a `package.json`:
 npm init -y
 ```
 
-Install the latest versions of Tailwind, PostCSS (+ CLI), and Autoprefixer:
+Install the latest versions of Tailwind, PostCSS, and Autoprefixer:
 ```
-npm install -D tailwindcss@latest postcss@latest postcss-cli@latest autoprefixer@latest
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
 ```
 
 Setup Tailwind:
 ```
 npx tailwindcss init
-```
-
-Create `postcss.config.js`and add Tailwind as a PostCSS plugin:
-```
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  }
-}
 ```
 
 In `app/assets/stylesheets/tailwind.css`:
@@ -44,6 +34,7 @@ In `app/assets/stylesheets/tailwind.css`:
 @tailwind components;
 @tailwind utilities;
 ```
+(This step isn't strictly necessary when using Tailwind CLI, but we'll include it here as it's pretty common to configure and add styles as your app grows.)
 
 ## Build
 
@@ -63,8 +54,8 @@ Set up build scripts in `package.json` to generate a compiled `tailwind-build.cs
 ```
 …
 "scripts": {
-  "build": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
-  "start": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch",
+  "build": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
+  "start": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch",
 },
 …
 ```
@@ -151,7 +142,7 @@ Install the plugin:
 npm i -D postcss-easy-import
 ```
 
-Configure `postcss.config.js`:
+Create and configure `postcss.config.js`:
 ```
 module.exports = {
   plugins: {

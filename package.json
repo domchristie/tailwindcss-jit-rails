@@ -8,18 +8,16 @@
     "test": "test"
   },
   "scripts": {
-    "build": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
-    "start": "postcss ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch"
+    "build": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
+    "start": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@tailwindcss/jit": "^0.1.8",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.10",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.1.1"
+    "tailwindcss": "^2.2.4"
   },
   "dependencies": {}
 }
