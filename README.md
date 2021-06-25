@@ -40,24 +40,20 @@ In `app/assets/stylesheets/tailwind.css`:
 
 Configure the files to scan for Tailwind class names. The Tailwind JIT compiler will use these to determine which CSS rules to generate. In `tailwind.config.js`:
 ```
-…
 mode: 'jit',
 purge: [
   './app/**/*.html.erb',
   './app/helpers/**/*.rb',
   './app/assets/javascripts/**/*.js'
 ],
-…
 ```
 
 Set up build scripts in `package.json` to generate a compiled `tailwind-build.css` file:
 ```
-…
 "scripts": {
   "build": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css",
-  "start": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch",
+  "start": "tailwindcss -i ./app/assets/stylesheets/tailwind.css -o ./app/assets/stylesheets/tailwind-build.css --watch"
 },
-…
 ```
 
 Add the compiled `tailwind-build.css` to the `application.css` manifest, and stub the `tailwind.css` manifest:
@@ -95,10 +91,8 @@ Make changes and try it out at `http://localhost:3000`
 
 Rather than checking in the built `tailwind-build.css` file each time we make changes, we could make this part of a build process on deploy. Here's the steps for deploying to Heroku:
 
-Ignore the files we don't need to check in:
+Ignore the files we don't need to check-in, in .gitignore:
 ```
-# .gitignore
-…
 /node_modules
 npm-debug.log
 /app/assets/stylesheets/tailwind-build.css
